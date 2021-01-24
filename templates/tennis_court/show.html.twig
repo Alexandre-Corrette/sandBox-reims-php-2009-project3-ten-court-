@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TennisCourt{% endblock %}
+
+{% block body %}
+    <h1>TennisCourt</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tennis_court.id }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ tennis_court.address }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ tennis_court.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ tennis_court.city }}</td>
+            </tr>
+            <tr>
+                <th>StartBookingHour</th>
+                <td>{{ tennis_court.startBookingHour ? tennis_court.startBookingHour|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EndBookingHour</th>
+                <td>{{ tennis_court.endBookingHour ? tennis_court.endBookingHour|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsAvailable</th>
+                <td>{{ tennis_court.isAvailable ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('tennis_court_index') }}">back to list</a>
+
+    <a href="{{ path('tennis_court_edit', {'id': tennis_court.id}) }}">edit</a>
+
+    {{ include('tennis_court/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile • Tencourt{% endblock %}
+
+{% block body %}
+    <div class="containerMyMatchesBackground">
+        <h1 class="myMatchesTitle">Mes matchs</h1>
+        <div class='myBlockListMatches'>
+            {% for match in matches %}
+                <a  class="containerMatchlisting" href="{{ path('tennis_match_show', { 'id' : match.id }) }}">
+                    <div class="matchListing">
+                        <p class="matchListingTitleMatch">{{ match.name }}</p>
+                        <p class="matchListingDateMatch">Le {{match.eventDate|date("m/d/Y")}}  à {{match.startHour|date("h")}}H{{match.startHour|date("i")}}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        <div>
+    </div>
+    <div class="blankMyProfileShowMatchPage"></div>
+{% endblock %}

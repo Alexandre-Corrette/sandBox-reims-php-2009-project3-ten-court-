@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajoutez votre terrain{% endblock %}
+
+{% block body %}
+<div class="addNewCourt">
+    <div class="newCourtForm">
+        <h1 class="newCourtTitle">Ajoutez votre terrain</h1>
+        <div class="containerNewCourtForm">
+            {{ form_start(tennis_court) }}
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court.courtName,) }}
+            </div>
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court.groundType,) }}
+            </div>
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court. address,) }}
+            </div>
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court.zipcode,) }}
+            </div>
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court.city,) }}
+            </div>
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court.availableDate,) }}
+            </div>
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court.startBookingHour,) }}
+            </div>
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court.endBookingHour,) }}
+            </div>
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court.isAvailable,) }}
+            </div>
+            <div class="itemNewCourtForm">
+                {{ form_row(tennis_court.owner,) }}
+            </div>
+            
+            {{ form_end(tennis_court) }}
+        </div>
+
+
+    </div>
+</div>
+    <a href="{{ path('tennis_court_index') }}">back to list</a>
+{% endblock %}
