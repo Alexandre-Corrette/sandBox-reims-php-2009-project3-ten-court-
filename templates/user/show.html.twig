@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Profile de ' ~ user.pseudo ~ ' • Tencourt'}}{% endblock %}
+
+{% block body %}
+    <div class="backgroundShowUser">
+        <div class="containerUserProfileShow">
+            {% if user.avatar == NULL  %}
+                <img class="playerPhoto" src="{{ asset('build/images/profileDefault/anonymeAvatar.png') }}"/>
+            {% else %}
+
+                <img class="playerPhoto" src="{{ asset('/uploads/' ~ user.avatar) }}"/>
+
+            {% endif %}
+            <div class="userPseudoShow">
+                <p class="userPseudoShowItem">{{ user.pseudo }}</p>
+                <p class="userSexShowItem">{{ user.sex }}</p>
+            </div>
+            <div class="userDescriptionShow">
+                <p>{{user.description}}</p>
+            </div>
+            <div class="userInformationShow">
+                <p class="userInformationItem userAgeShow">{{user.age ~ ' ans'}}</p>
+                <p class="userInformationItem userLocalisationShow">{{user.city}}</p>
+                <p class="userInformationItem userLevelShow">{{user.level}}</p>
+            </div>
+        </div>
+        <div class="userContactShow">
+            {% if user.phone %}
+                <div class="userContactPhone">Numéro de telephone:</div>
+                <div class="userPhoneShow">{{user.phone}}</div>
+            {% endif %}
+        
+            <div class="userContactMail">Adresse Mail:</div>
+            <div class="userEmailShow">{{user.email}}</div>
+
+            <div class="userContactAddress">Adresse:</div>
+            <div class="userAddressShow">{{user.address ~ ' ' ~ user.postalcode ~ ' ' ~ user.city}}</div>
+        </div>
+        <div class="blankEditionPage"></div>
+    </div>
+{% endblock %}

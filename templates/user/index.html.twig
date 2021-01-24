@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs • Tencourt{% endblock %}
+
+{% block body %}
+<div class='containerSearch'>
+    <div class="backgroundAllUsers">
+        <h2 class='searchTitleUsers'>Trouver un adversaire: </h2>
+        {% for user in users %}
+            <a class="containerPlayers" href="{{ path('user_show', {'slug': user.slug}) }}">
+                <div class='players'>
+                {% if user.avatar == null %}
+                    <img class="playerPhoto" src="{{ asset('build/images/profileDefault/anonymeAvatar.png') }}"/>
+                {% else %}
+                    <img class="playerPhoto" src="{{ asset('/uploads/' ~ user.avatar) }}"/>
+                {% endif %}
+                    <div class="container_1_players">
+                        <p class='playerItem playerPseudo'>{{user.pseudo}}</p>
+                        <p class='playerItem playerSex'>{{user.sex}}</p>
+                        <p class='playerItem playerAge'>{{user.age}} ans</p>
+                        <p class='playerItem playerLevel'>{{user.level}}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        <div class="blankShowUserPage"></div>
+{#         <a href="{{ path('user_new') }}">
+            Ajouter un joueur
+        </a> #}
+    </div>
+</div>
+{% endblock %}

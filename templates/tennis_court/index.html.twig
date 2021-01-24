@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TennisCourt index{% endblock %}
+
+{% block body %}
+    <h1>TennisCourt index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address</th>
+                <th>Zipcode</th>
+                <th>City</th>
+                <th>StartBookingHour</th>
+                <th>EndBookingHour</th>
+                <th>IsAvailable</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tennis_court in tennis_courts %}
+            <tr>
+                <td>{{ tennis_court.id }}</td>
+                <td>{{ tennis_court.address }}</td>
+                <td>{{ tennis_court.zipcode }}</td>
+                <td>{{ tennis_court.city }}</td>
+                <td>{{ tennis_court.startBookingHour ? tennis_court.startBookingHour|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ tennis_court.endBookingHour ? tennis_court.endBookingHour|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ tennis_court.isAvailable ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('tennis_court_show', {'id': tennis_court.id}) }}">show</a>
+                    <a href="{{ path('tennis_court_edit', {'id': tennis_court.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('tennis_court_new') }}">Create new</a>
+{% endblock %}
